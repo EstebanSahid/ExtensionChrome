@@ -1,3 +1,5 @@
+
+
 var fechaActual = new Date();
 var fechaMenosUnMes;
 var fechaMasUnMes;
@@ -5,33 +7,44 @@ var respuestaJson = [];
 
 
 function clickEvento(){
-    document.getElementById("btn").click();
+    var evento = document.getElementById("btn");
 
-    var fechaMenosUnMesTemp = new Date(fechaActual);
-    var fechaMasUnMesTemp = new Date(fechaActual);
+    if(evento){
+        document.getElementById("btn").click();
+        var fechaMenosUnMesTemp = new Date(fechaActual);
+        var fechaMasUnMesTemp = new Date(fechaActual);
 
-    EventfechaMenosUnMes(fechaMenosUnMesTemp);
-    EventfechaMasUnMes(fechaMasUnMesTemp);
+        EventfechaMenosUnMes(fechaMenosUnMesTemp);
+        EventfechaMasUnMes(fechaMasUnMesTemp);
 
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then(data => {
-        respuestaJson = data;
-        console.log(respuestaJson);
-        downloadCSV();
-    });
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => response.json())
+        .then(data => {
+            respuestaJson = data;
+            console.log(respuestaJson);
+            downloadCSV();
+        });
+    }
 }
 
 
 function EventfechaMenosUnMes(fecha) {
     fecha.setMonth(fecha.getMonth() - 1);
     fechaMenosUnMes = formatoAnioMesDia(fecha);
+
+    const fechaIniInput = document.getElementById("fechaini");
+    fechaIniInput.value = fechaMenosUnMes;
+
     console.log("Fecha actual menos un mes: " + fechaMenosUnMes);
 }
 
 function EventfechaMasUnMes(fecha) {
     fecha.setMonth(fecha.getMonth() + 1);
     fechaMasUnMes = formatoAnioMesDia(fecha);
+
+    const fechaFinInput = document.getElementById("fechafin");
+    fechaFinInput.value = fechaMasUnMes;
+
     console.log("Fecha actual más un mes: " + fechaMasUnMes);
 }
 

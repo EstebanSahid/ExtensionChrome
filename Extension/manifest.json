@@ -1,3 +1,4 @@
+
 {
     "name": "Primera Extension Demo",
     "description": "Descripcion de la extensión",
@@ -20,6 +21,7 @@
         }
     ],
     "permissions": [
+        "activeTab",
         "webRequest",
         "webRequestBlocking",
         "*://jsonplaceholder.typicode.com/*"
