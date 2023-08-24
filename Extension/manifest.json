@@ -1,0 +1,27 @@
+{
+    "name": "Primera Extension Demo",
+    "description": "Descripcion de la extensión",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "/images/logos/logo-extension.png"
+    },
+    "icons": {
+        "16": "/images/logos/logo-extension.png",
+        "32": "/images/logos/logo-extension.png",
+        "48": "/images/logos/logo-extension.png",
+        "128": "/images/logos/logo-extension.png"
+    },
+    "content_scripts": [
+        {
+            "js": ["scripts/content.js"],
+            "matches": ["file:///C:/Users/Esteban%20Sahid/*"]
+        }
+    ],
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "*://jsonplaceholder.typicode.com/*"
+    ]
+}
